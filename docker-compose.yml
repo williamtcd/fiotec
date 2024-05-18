@@ -1,0 +1,55 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports: 
+      - "8181:80"
+    networks:
+      - internal
+    volumes:
+      - ./application/fiotec/:/var/www/html/
+      - ./logs/nginx:/var/log/nginx/
+    container_name: nginx
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    networks:
+      - internal
+    volumes:
+      - ./application/fiotec/:/var/www/html/
+      - ./logs/php.log:/var/log/fpm-php.www.log
+    container_name: php
+    expose:
+      - "9000"
+  mysql:
+    container_name: db
+    restart: always
+    image: mysql:latest
+    platform: linux/x86_64
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_PASS: 'root'
+    volumes:
+      - ./db-data:/var/lib/mysql
+    networks:
+      - internal
+  app:
+    build:
+      context: .
+      dockerfile: vue/fiotec-front/Dockerfile
+    container_name: vue_app_container
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./vue/fiotec-front/:/app
+    working_dir: /app
+    command: ['yarn', 'serve']
+    networks:
+      - internal
+
+networks:
+  internal:
+    driver: bridge
