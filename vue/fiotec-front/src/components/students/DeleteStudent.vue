@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialogDeleteStudent"
+    v-model="dialog"
     max-width="500"
     persistent
   >
@@ -59,10 +59,16 @@
       return useSnackBar()
     }
   },
+  watch: {
+    dialogDeleteStudent () {
+      this.dialog = this.dialogDeleteStudent ? this.dialogDeleteStudent : false
+    }
+  },
 
   data: () => ({
     loading: false,
-    name: ''
+    name: '',
+    dialog: false
   }),
 
   methods: {

@@ -98,7 +98,7 @@
     </v-card>
 
     <EditSchoolCourse
-      v-model="dialogEditSchoolCourse"
+      :dialog-edit-school-course="dialogEditSchoolCourse"
       :school-course-id="schoolCourseId"
       :school-course-name="schoolCourseName"
       @reload="getSchoolCourse"

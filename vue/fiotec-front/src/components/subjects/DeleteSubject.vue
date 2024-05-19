@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialogDeleteSubject"
+    v-model="dialog"
     max-width="500"
     persistent
   >
@@ -63,8 +63,14 @@
 
   data: () => ({
     loading: false,
-    name: ''
+    name: '',
+    dialog: false
   }),
+  watch: {
+    dialogDeleteSubject () {
+      this.dialog = this.dialogDeleteSubject ? this.dialogDeleteSubject : false
+    }
+  },
 
   methods: {
     close () {

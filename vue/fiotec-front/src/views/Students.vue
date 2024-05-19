@@ -22,14 +22,14 @@
             @reload="listStudents"
           />
           <DeleteStudent
-            v-model="dialogDeleteStudent"
+            :dialog-delete-student="dialogDeleteStudent"
             :student-id="studentId"
             :student-name="studentName"
             @reload="listStudents"
             @close="closeDialogs"
           />
           <EditStudent
-            v-model="dialogEditStudent"
+            :dialog-edit-student="dialogEditStudent"
             :student-id="studentId"
             :student-name="studentName"
             @reload="listStudents"
@@ -41,14 +41,14 @@
         <v-icon
           class="me-2"
           size="small"
-          @click="editStudent(item)"
+          @click="openEditStudent(item)"
         >
           mdi-pencil
         </v-icon>
         <v-icon
           class="ml-4"
           size="small"
-          @click="deleteStudent(item)"
+          @click="OpenDeleteStudent(item)"
         >
           mdi-delete
         </v-icon>
@@ -122,16 +122,12 @@
       },
 
       methods: {
-        editItem (item) {
-          console.log(item)
-        },
-
-        deleteStudent (student) {
+        OpenDeleteStudent (student) {
           this.studentId = student.id
           this.studentName = student.name
           this.dialogDeleteStudent = true
         },
-        editStudent (student) {
+        openEditStudent (student) {
           this.studentId = student.id
           this.studentName = student.name
           this.dialogEditStudent = true

@@ -1,6 +1,6 @@
 <template>
   <v-dialog
-    v-model="dialogEditStudent"
+    v-model="dialog"
     max-width="400"
     persistent
   >
@@ -73,6 +73,9 @@ import { useSnackBar } from '@/stores/snackBar.js'
   watch: {
     studentName () {
       this.name = this.studentName
+    },
+    dialogEditStudent () {
+      this.dialog = this.dialogEditStudent ? this.dialogEditStudent : false
     }
   },
   created () {

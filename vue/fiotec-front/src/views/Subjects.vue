@@ -22,14 +22,14 @@
             @reload="listSubjects"
           />
           <DeleteSubject
-            v-model="dialogDeleteSubject"
+            :dialog-delete-subject="dialogDeleteSubject"
             :subject-id="subjectId"
             :subject-name="subjectName"
             @reload="listSubjects"
             @close="closeDialogs"
           />
           <EditSubject
-            v-model="dialogEditSubject"
+            :dialog-edit-subject="dialogEditSubject"
             :subject-id="subjectId"
             :subject-name="subjectName"
             @reload="listSubjects"

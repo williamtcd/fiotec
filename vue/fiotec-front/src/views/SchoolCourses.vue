@@ -48,7 +48,7 @@
     </v-data-table>
 
     <DeleteSchoolCourse
-      v-model="dialogDeleteSchoolCourse"
+      :dialog-delete-school-course="dialogDeleteSchoolCourse"
       :school-course-id="schoolCourseId"
       :school-course-name="schoolCourseName"
       @reload="listSchoolCourses"
@@ -56,7 +56,7 @@
     />
 
     <EditSchoolCourse
-      v-model="dialogEditSchoolCourse"
+      :dialog-edit-school-course="dialogEditSchoolCourse"
       :school-course-id="schoolCourseId"
       :school-course-name="schoolCourseName"
       @reload="listSchoolCourses"
