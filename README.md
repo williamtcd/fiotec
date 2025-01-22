@@ -1,6 +1,6 @@
 ## FIOTEC
 
-git clone git@github.com:williamtavarescd/fiotec.git
+git clone
 
 - cd fiotec
 - cd vue/fiotec-front
